@@ -1,0 +1,22 @@
+{
+  "name": "sugarshin-bolt",
+  "version": "0.0.0",
+  "description": "My Bolt App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sugarshin/sugarshin-bolt.git"
+  },
+  "author": "Shingo Sato",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sugarshin/sugarshin-bolt/issues"
+  },
+  "homepage": "https://github.com/sugarshin/sugarshin-bolt#readme",
+  "dependencies": {
+    "@slack/bolt": "1.5.0"
+  }
+}
