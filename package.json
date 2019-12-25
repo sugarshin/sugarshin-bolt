@@ -4,7 +4,9 @@
   "description": "My Bolt App",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node src/app.ts",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
@@ -17,6 +19,12 @@
   },
   "homepage": "https://github.com/sugarshin/sugarshin-bolt#readme",
   "dependencies": {
-    "@slack/bolt": "1.5.0"
+    "@slack/bolt": "1.5.0",
+    "dotenv": "8.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "2.0.2",
+    "ts-node": "8.5.4",
+    "typescript": "3.7.4"
   }
 }
