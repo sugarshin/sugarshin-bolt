@@ -1,12 +1,13 @@
 {
   "name": "sugarshin-bolt",
   "version": "0.0.0",
-  "description": "My Bolt App",
-  "main": "index.js",
+  "description": "My Bolt",
+  "main": "dist/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node src/app.ts",
-    "build": "tsc"
+    "dev": "ts-node-dev --respawn src/app.ts",
+    "build": "tsc",
+    "start": "node dist/app.js"
   },
   "repository": {
     "type": "git",
@@ -19,12 +20,23 @@
   },
   "homepage": "https://github.com/sugarshin/sugarshin-bolt#readme",
   "dependencies": {
+    "@octokit/rest": "16.36.0",
     "@slack/bolt": "1.5.0",
-    "dotenv": "8.2.0"
+    "cheerio": "1.0.0-rc.3",
+    "cron": "1.7.2",
+    "dotenv": "8.2.0",
+    "iconv-lite": "0.5.0",
+    "lodash": "4.17.15",
+    "request": "2.88.0",
+    "request-promise-native": "1.0.8"
   },
   "devDependencies": {
+    "@types/cheerio": "0.22.15",
+    "@types/cron": "1.7.1",
+    "@types/lodash": "4.14.149",
+    "@types/request-promise-native": "1.0.17",
     "nodemon": "2.0.2",
-    "ts-node": "8.5.4",
+    "ts-node-dev": "1.0.0-pre.44",
     "typescript": "3.7.4"
   }
 }
