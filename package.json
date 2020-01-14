@@ -4,12 +4,16 @@
   "description": "My Bolt",
   "main": "dist/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test specified\"",
     "clean:dist": "rm -rf ./dist",
     "prebuild": "npm run clean:dist",
     "build": "tsc",
     "dev": "ts-node-dev --respawn src/app.ts",
-    "start": "node dist/app.js"
+    "start": "node dist/app.js",
+    "heroku-postbuild": "NODE_ENV=production npm run build"
+  },
+  "engines": {
+    "node": "12.14.0"
   },
   "repository": {
     "type": "git",
