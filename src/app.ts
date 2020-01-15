@@ -1,10 +1,12 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
-import { app } from './initializers/bolt';
+import { app, receiver } from './initializers/bolt';
 import { fassReservation } from './commands/fass-reservation';
 import { pCron } from './crons/p';
+import { keepalive } from './effects/keepalive';
 
+keepalive(app, receiver);
 fassReservation(app);
 pCron(app);
 
