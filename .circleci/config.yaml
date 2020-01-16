@@ -1,0 +1,27 @@
+version: 2.1
+
+executors:
+  buildpack_deps:
+    working_directory: ~/repo
+    docker:
+      - image: circleci/buildpack-deps:curl
+
+jobs:
+  wake_bolt:
+    executor: buildpack_deps
+    steps:
+      - checkout
+      - run: |
+          curl -X POST -i -m 5 https://sugarshin-bolt.herokuapp.com/heroku-keepalive || :
+
+workflows:
+  wake_bolt_daily:
+    triggers:
+      - schedule:
+          cron: "5 22 * * *" # JST AM07:05
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - wake_bolt
