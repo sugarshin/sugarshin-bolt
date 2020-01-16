@@ -1,7 +1,8 @@
 import { CronJob } from 'cron';
-import { App } from '@slack/bolt';
 import { random } from 'lodash';
+import { logger } from '../../initializers/logger';
 import { octokit } from '../../initializers/octokit';
+import { App } from '../../types';
 
 const { SLACK_PROMISE_CHANNEL_ID: PROMISE_CHANNEL } = process.env;
 
@@ -17,7 +18,7 @@ export const pCron = (app: App) => {
       },
     })
     .catch((err: Error) => {
-      console.error(err.message);
+      logger.error(err.message);
     });
 
     if (!res || !res.data) {
@@ -74,7 +75,7 @@ ${commonHeader && selectedCommon ? `✅ ${commonHeader.text.replace(/^##\s+/, ''
 `
     })
     .catch((err: Error) => {
-      console.error(err.message);
+      logger.error(err.message);
     });
   };
 
