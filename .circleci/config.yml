@@ -15,6 +15,13 @@ jobs:
           curl -X POST -i -m 5 https://sugarshin-bolt.herokuapp.com/heroku-keepalive || :
 
 workflows:
+  # this is for only testing
+  wake_bolt_test:
+    jobs:
+      - wake_bolt:
+          filters:
+            branches:
+              only: wake-bolt-test
   wake_bolt_daily:
     triggers:
       - schedule:
