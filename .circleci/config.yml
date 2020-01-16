@@ -12,7 +12,7 @@ jobs:
     steps:
       - checkout
       - run: |
-          curl -X POST -i -m 5 https://sugarshin-bolt.herokuapp.com/heroku-keepalive || :
+          curl -X POST -i -m 30 https://sugarshin-bolt.herokuapp.com/heroku-keepalive || :
 
 workflows:
   # this is for only testing
