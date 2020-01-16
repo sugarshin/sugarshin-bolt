@@ -2,15 +2,16 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 import { app, receiver } from './initializers/bolt';
+import { logger } from './initializers/logger';
 import { fassReservation } from './commands/fass-reservation';
 import { pCron } from './crons/p';
-import { keepalive } from './effects/keepalive';
+import { herokuKeepalive } from './effects/heroku-keepalive';
 
-keepalive(app, receiver);
+herokuKeepalive(app, receiver);
 fassReservation(app);
 pCron(app);
 
 (async () => {
   await app.start(process.env.PORT || 3000);
-  console.log('⚡️ Bolt app is running!');
+  logger.info('⚡️ Bolt app is running!');
 })();
