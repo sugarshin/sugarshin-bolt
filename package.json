@@ -39,12 +39,12 @@
     "request-promise-native": "1.0.8"
   },
   "devDependencies": {
-    "@types/cheerio": "0.22.15",
-    "@types/cron": "1.7.1",
-    "@types/lodash": "4.14.149",
+    "@types/cheerio": "0.22.21",
+    "@types/cron": "1.7.2",
+    "@types/lodash": "4.14.157",
     "@types/request-promise-native": "1.0.17",
-    "nodemon": "2.0.2",
-    "ts-node-dev": "1.0.0-pre.44",
-    "typescript": "3.7.4"
+    "nodemon": "2.0.4",
+    "ts-node-dev": "1.0.0-pre.51",
+    "typescript": "3.7.5"
   }
 }
