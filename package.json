@@ -13,7 +13,7 @@
     "heroku-postbuild": "NODE_ENV=production npm run build"
   },
   "engines": {
-    "node": "12.14.0"
+    "node": "12.14.1"
   },
   "repository": {
     "type": "git",
