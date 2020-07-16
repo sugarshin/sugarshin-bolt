@@ -45,6 +45,6 @@
     "@types/request-promise-native": "1.0.17",
     "nodemon": "2.0.4",
     "ts-node-dev": "1.0.0-pre.52",
-    "typescript": "3.9.6"
+    "typescript": "3.9.7"
   }
 }
