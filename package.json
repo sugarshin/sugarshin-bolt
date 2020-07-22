@@ -41,7 +41,7 @@
   "devDependencies": {
     "@types/cheerio": "0.22.21",
     "@types/cron": "1.7.2",
-    "@types/lodash": "4.14.157",
+    "@types/lodash": "4.14.158",
     "@types/request-promise-native": "1.0.17",
     "nodemon": "2.0.4",
     "ts-node-dev": "1.0.0-pre.52",
