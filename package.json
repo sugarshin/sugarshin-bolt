@@ -44,7 +44,7 @@
     "@types/lodash": "4.14.158",
     "@types/request-promise-native": "1.0.17",
     "nodemon": "2.0.4",
-    "ts-node-dev": "1.0.0-pre.52",
+    "ts-node-dev": "1.0.0-pre.53",
     "typescript": "3.9.7"
   }
 }
