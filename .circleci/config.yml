@@ -9,30 +9,38 @@ executors:
     working_directory: ~/repo
     docker:
       - image: circleci/buildpack-deps:curl
-  # node:
-  #   name: node/default
-  #   tag: '12.18.3'
+
 jobs:
   wake_bolt:
     executor: buildpack_deps
     steps:
       - run: |
           curl -X POST -i -m 30 https://sugarshin-bolt.herokuapp.com/heroku-keepalive || :
-  test_lint:
+  lint_tsc:
     executor:
       name: node/default
       tag: '12.18.3'
     steps:
       - checkout
       - node/install-packages:
-          # app-dir: ~/repo
           include-branch-in-cache-key: false
       - run: npm run lint:ci
+      - run:
+          command: npm run build -- --noEmit
+          environment:
+            NODE_ENV: production
 
 workflows:
   test_build_deploy:
     jobs:
-      - test_lint
+      - lint_tsc
+      - heroku/deploy-via-git:
+          app-name: $CIRCLE_PROJECT_REPONAME
+          requires:
+            - lint_tsc
+          filters:
+            branches:
+              only: master
 
   # this is for only testing
   wake_bolt_test:
