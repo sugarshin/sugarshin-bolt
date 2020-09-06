@@ -2,21 +2,38 @@ version: 2.1
 
 orbs:
   heroku: circleci/heroku@1.2.2
+  node: circleci/node@4.0.0
 
 executors:
   buildpack_deps:
     working_directory: ~/repo
     docker:
       - image: circleci/buildpack-deps:curl
-
+  # node:
+  #   name: node/default
+  #   tag: '12.18.3'
 jobs:
   wake_bolt:
     executor: buildpack_deps
     steps:
       - run: |
           curl -X POST -i -m 30 https://sugarshin-bolt.herokuapp.com/heroku-keepalive || :
+  test_lint:
+    executor:
+      name: node/default
+      tag: '12.18.3'
+    steps:
+      - checkout
+      - node/install-packages:
+          # app-dir: ~/repo
+          include-branch-in-cache-key: false
+      - run: npm run lint:ci
 
 workflows:
+  test_build_deploy:
+    jobs:
+      - test_lint
+
   # this is for only testing
   wake_bolt_test:
     jobs:
