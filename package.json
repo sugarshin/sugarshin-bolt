@@ -5,6 +5,9 @@
   "main": "dist/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\"",
+    "lint": "eslint './**/*.{ts,tsx}'",
+    "lint:fix": "npm run lint -- --fix",
+    "lint:ci": "npm run lint -- --max-warnings 0",
     "clean:dist": "rm -rf ./dist",
     "prebuild": "npm run clean:dist",
     "build": "tsc",
@@ -43,8 +46,17 @@
     "@types/cron": "1.7.2",
     "@types/lodash": "4.14.159",
     "@types/request-promise-native": "1.0.17",
+    "@typescript-eslint/eslint-plugin": "4.0.1",
+    "@typescript-eslint/parser": "4.0.1",
+    "eslint": "7.8.1",
+    "eslint-config-prettier": "6.11.0",
+    "eslint-plugin-prettier": "3.1.4",
+    "husky": "4.2.5",
+    "lint-staged": "10.3.0",
     "nodemon": "2.0.4",
+    "prettier": "2.1.1",
     "ts-node-dev": "1.0.0-pre.56",
+    "type-fest": "0.16.0",
     "typescript": "3.9.7"
   }
 }
