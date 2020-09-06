@@ -13,6 +13,11 @@ fassReservation(app);
 pCron(app);
 mrBlogCron();
 
+receiver.app.disable('x-powered-by');
+receiver.app.get('/health', (_, res) => {
+  res.sendStatus(200);
+});
+
 (async () => {
   await app.start(process.env.PORT || 3000);
   logger.info('⚡️ Bolt app is running!');
