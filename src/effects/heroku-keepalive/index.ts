@@ -3,44 +3,48 @@ import got from 'got';
 import { logger } from '../../initializers/logger';
 import { App } from '../../types';
 
-export const herokuKeepalive = (app: App, receiver: ExpressReceiver) => {
+export const herokuKeepalive = (app: App, receiver: ExpressReceiver): void => {
   if (!process.env.HEROKU_KEEPALIVE_URL) {
     logger.error('`herokuKeepalive` included, but missing HEROKU_KEEPALIVE_URL.');
-    return
+    return;
   }
 
-  const wakeUpTime = (process.env.HEROKU_KEEPALIVE_WAKEUP_TIME || '6:00').split(':').map(i => parseInt(i, 10));
-  const sleepTime = (process.env.HEROKU_KEEPALIVE_SLEEP_TIME || '22:00').split(':').map(i => parseInt(i, 10));
+  const wakeUpTime = (process.env.HEROKU_KEEPALIVE_WAKEUP_TIME || '6:00')
+    .split(':')
+    .map(i => parseInt(i, 10));
+  const sleepTime = (process.env.HEROKU_KEEPALIVE_SLEEP_TIME || '22:00')
+    .split(':')
+    .map(i => parseInt(i, 10));
   const wakeUpOffset = (60 * wakeUpTime[0] + wakeUpTime[1]) % (60 * 24);
   const awakeMinutes = (60 * (sleepTime[0] + 24) + sleepTime[1] - wakeUpOffset) % (60 * 24);
-  const keepaliveInterval = process.env.HEROKU_KEEPALIVE_INTERVAL ? parseFloat(process.env.HEROKU_KEEPALIVE_INTERVAL) : 5;
+  const keepaliveInterval = process.env.HEROKU_KEEPALIVE_INTERVAL
+    ? parseFloat(process.env.HEROKU_KEEPALIVE_INTERVAL)
+    : 5;
 
   const client = got.extend({
-    prefixUrl: process.env.HEROKU_KEEPALIVE_URL
+    prefixUrl: process.env.HEROKU_KEEPALIVE_URL,
   });
 
   if (keepaliveInterval > 0) {
-    app.context.keepaliveIntervalId = setInterval(
-      async () => {
-        logger.info('keepalive ping');
+    app.context.keepaliveIntervalId = setInterval(async () => {
+      logger.info('keepalive ping');
 
-        const now = new Date();
-        const elapsedMinutes = (((60 * (now.getHours() + 24)) + now.getMinutes()) - wakeUpOffset) % (60 * 24);
+      const now = new Date();
+      const elapsedMinutes =
+        (60 * (now.getHours() + 24) + now.getMinutes() - wakeUpOffset) % (60 * 24);
 
-        if (elapsedMinutes < awakeMinutes) {
-          try {
-            const res = await client.post('heroku-keepalive');
-            logger.info(`keepalive pong: ${res.statusCode} ${res.body}`);
-          } catch (error) {
-            logger.info(`keepalive pong: ${error}`);
-            app.action('error', error);
-          }
-        } else {
-          logger.info('Skipping keep alive, time to rest');
+      if (elapsedMinutes < awakeMinutes) {
+        try {
+          const res = await client.post('heroku-keepalive');
+          logger.info(`keepalive pong: ${res.statusCode} ${res.body}`);
+        } catch (error) {
+          logger.info(`keepalive pong: ${error}`);
+          app.action('error', error);
         }
-      },
-      keepaliveInterval * 60 * 1000
-    );
+      } else {
+        logger.info('Skipping keep alive, time to rest');
+      }
+    }, keepaliveInterval * 60 * 1000);
   } else {
     logger.info(`herokuKeepalive is ${keepaliveInterval}, so not keeping alive`);
   }
