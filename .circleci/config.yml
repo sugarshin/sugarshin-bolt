@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  heroku: circleci/heroku@1.2.2
+
 executors:
   buildpack_deps:
     working_directory: ~/repo
@@ -10,7 +13,6 @@ jobs:
   wake_bolt:
     executor: buildpack_deps
     steps:
-      - checkout
       - run: |
           curl -X POST -i -m 30 https://sugarshin-bolt.herokuapp.com/heroku-keepalive || :
 
