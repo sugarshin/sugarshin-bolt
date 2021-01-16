@@ -11,6 +11,7 @@ const getWaitingResultPageUrl = (salonId: string) =>
 const selectors = {
   waitingOrder: 'body > div > DIV',
   outsideHours: ':contains("ただいまの時間は営業時間外です")',
+  closed: 'body',
 };
 
 const getWaitingOrder = (html: string) =>
@@ -59,7 +60,12 @@ export const fassReservation = (app: App): void => {
           return;
         }
         if (isUndefined((m as RegExpMatchArray)[2])) {
-          say($(selectors.waitingOrder).text());
+          const $waitingOrder = $(selectors.waitingOrder);
+          if ($waitingOrder.length > 0) {
+            say($waitingOrder.text());
+            return;
+          }
+          say($(selectors.closed).text());
           return;
         }
 
