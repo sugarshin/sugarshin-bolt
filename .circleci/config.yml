@@ -2,7 +2,7 @@ version: 2.1
 
 orbs:
   heroku: circleci/heroku@1.2.5
-  node: circleci/node@4.0.1
+  node: circleci/node@4.1.0
 
 executors:
   buildpack_deps:
