@@ -92,5 +92,5 @@ ${
       });
   };
 
-  new CronJob('0 00 13,21 * * 0-6', sayP).start();
+  // new CronJob('0 00 13,21 * * 0-6', sayP).start();
 };
