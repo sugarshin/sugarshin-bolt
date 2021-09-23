@@ -4,13 +4,13 @@ dotenv.config();
 import { app, receiver } from './initializers/bolt';
 import { logger } from './initializers/logger';
 import { fassReservation } from './commands/fass-reservation';
-import { pCron } from './crons/p';
+// import { pCron } from './crons/p';
 import { mrBlogCron } from './crons/mr-blog';
 import { herokuKeepalive } from './effects/heroku-keepalive';
 
 herokuKeepalive(app, receiver);
 fassReservation(app);
-pCron(app);
+// pCron(app);
 mrBlogCron();
 
 receiver.app.disable('x-powered-by');
