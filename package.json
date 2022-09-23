@@ -41,7 +41,7 @@
   "dependencies": {
     "@octokit/rest": "16.43.2",
     "@slack/bolt": "2.6.0",
-    "@slack/logger": "2.0.0",
+    "@slack/logger": "3.0.0",
     "cheerio": "1.0.0-rc.5",
     "cron": "1.8.2",
     "dotenv": "8.2.0",
