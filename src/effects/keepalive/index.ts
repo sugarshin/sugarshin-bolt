@@ -3,9 +3,9 @@ import got from 'got';
 import { logger } from '../../initializers/logger';
 import { App } from '../../types';
 
-export const herokuKeepalive = (app: App, receiver: ExpressReceiver): void => {
+export const keepalive = (app: App, receiver: ExpressReceiver): void => {
   if (!process.env.HEROKU_KEEPALIVE_URL) {
-    logger.error('`herokuKeepalive` included, but missing HEROKU_KEEPALIVE_URL.');
+    logger.error('`keepalive` included, but missing HEROKU_KEEPALIVE_URL.');
     return;
   }
 
@@ -35,21 +35,21 @@ export const herokuKeepalive = (app: App, receiver: ExpressReceiver): void => {
 
       if (elapsedMinutes < awakeMinutes) {
         try {
-          const res = await client.post('heroku-keepalive');
+          const res = await client.post('keepalive');
           logger.info(`keepalive pong: ${res.statusCode} ${res.body}`);
         } catch (error) {
           logger.info(`keepalive pong: ${error}`);
-          app.action('error', error);
+          app.action('error');
         }
       } else {
         logger.info('Skipping keep alive, time to rest');
       }
     }, keepaliveInterval * 60 * 1000);
   } else {
-    logger.info(`herokuKeepalive is ${keepaliveInterval}, so not keeping alive`);
+    logger.info(`keepalive is ${keepaliveInterval}, so not keeping alive`);
   }
 
-  receiver.app.post('/heroku-keepalive', (_, res) => {
+  receiver.app.post('/keepalive', (_, res) => {
     res.set('Content-Type', 'text/plain');
     res.send('OK');
   });
