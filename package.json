@@ -40,13 +40,13 @@
   "homepage": "https://github.com/sugarshin/sugarshin-bolt#readme",
   "dependencies": {
     "@octokit/rest": "16.43.2",
-    "@slack/bolt": "2.6.0",
+    "@slack/bolt": "2.6.1",
     "@slack/logger": "3.0.0",
-    "cheerio": "1.0.0-rc.5",
+    "cheerio": "1.0.0-rc.12",
     "cron": "1.8.2",
     "dotenv": "8.2.0",
     "got": "10.7.0",
-    "iconv-lite": "0.6.2",
+    "iconv-lite": "0.6.3",
     "lodash": "4.17.21",
     "request": "2.88.2",
     "request-promise-native": "1.0.9"
