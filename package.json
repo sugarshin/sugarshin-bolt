@@ -44,7 +44,7 @@
     "@slack/logger": "3.0.0",
     "cheerio": "1.0.0-rc.12",
     "cron": "1.8.2",
-    "dotenv": "8.2.0",
+    "dotenv": "8.6.0",
     "got": "10.7.0",
     "iconv-lite": "0.6.3",
     "lodash": "4.17.21",
