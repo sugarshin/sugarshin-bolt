@@ -47,7 +47,7 @@
     "dotenv": "8.2.0",
     "got": "10.7.0",
     "iconv-lite": "0.6.2",
-    "lodash": "4.17.20",
+    "lodash": "4.17.21",
     "request": "2.88.2",
     "request-promise-native": "1.0.9"
   },
