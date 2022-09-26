@@ -11,4 +11,4 @@
 
 ## Deploy
 
-Merge to master branch will trigger Automatic deploys to Heroku.
+Merge to master branch will trigger Automatic deploys to [render](https://render.com/).

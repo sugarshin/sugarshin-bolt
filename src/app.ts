@@ -5,13 +5,13 @@ import { app, receiver } from './initializers/bolt';
 import { logger } from './initializers/logger';
 import { fassReservation } from './commands/fass-reservation';
 // import { pCron } from './crons/p';
-import { mrBlogCron } from './crons/mr-blog';
-import { herokuKeepalive } from './effects/heroku-keepalive';
+// import { mrBlogCron } from './crons/mr-blog';
+import { keepalive } from './effects/keepalive';
 
-herokuKeepalive(app, receiver);
+keepalive(app, receiver);
 fassReservation(app);
 // pCron(app);
-mrBlogCron();
+// mrBlogCron();
 
 receiver.app.disable('x-powered-by');
 receiver.app.get('/health', (_, res) => {
