@@ -12,8 +12,7 @@
     "prebuild": "npm run clean:dist",
     "build": "tsc",
     "dev": "ts-node-dev --respawn src/app.ts",
-    "start": "node dist/app.js",
-    "heroku-postbuild": "NODE_ENV=production npm run build"
+    "start": "node dist/app.js"
   },
   "husky": {
     "hooks": {

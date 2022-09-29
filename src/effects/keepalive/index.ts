@@ -4,25 +4,25 @@ import { logger } from '../../initializers/logger';
 import { App } from '../../types';
 
 export const keepalive = (app: App, receiver: ExpressReceiver): void => {
-  if (!process.env.HEROKU_KEEPALIVE_URL) {
-    logger.error('`keepalive` included, but missing HEROKU_KEEPALIVE_URL.');
+  if (!process.env.KEEPALIVE_URL_BASE) {
+    logger.error('`keepalive` included, but missing KEEPALIVE_URL_BASE.');
     return;
   }
 
-  const wakeUpTime = (process.env.HEROKU_KEEPALIVE_WAKEUP_TIME || '6:00')
+  const wakeUpTime = (process.env.KEEPALIVE_WAKEUP_TIME || '6:00')
     .split(':')
     .map(i => parseInt(i, 10));
-  const sleepTime = (process.env.HEROKU_KEEPALIVE_SLEEP_TIME || '22:00')
+  const sleepTime = (process.env.KEEPALIVE_SLEEP_TIME || '22:00')
     .split(':')
     .map(i => parseInt(i, 10));
   const wakeUpOffset = (60 * wakeUpTime[0] + wakeUpTime[1]) % (60 * 24);
   const awakeMinutes = (60 * (sleepTime[0] + 24) + sleepTime[1] - wakeUpOffset) % (60 * 24);
-  const keepaliveInterval = process.env.HEROKU_KEEPALIVE_INTERVAL
-    ? parseFloat(process.env.HEROKU_KEEPALIVE_INTERVAL)
+  const keepaliveInterval = process.env.KEEPALIVE_INTERVAL
+    ? parseFloat(process.env.KEEPALIVE_INTERVAL)
     : 5;
 
   const client = got.extend({
-    prefixUrl: process.env.HEROKU_KEEPALIVE_URL,
+    prefixUrl: process.env.KEEPALIVE_URL_BASE,
   });
 
   if (keepaliveInterval > 0) {
