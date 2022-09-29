@@ -8,6 +8,7 @@ services:
     branch: master
     numInstances: 1
     healthCheckPath: /health
+    pullRequestPreviewsEnabled: true
     buildCommand: npm ci && NODE_ENV=production npm run build
     startCommand: npm start
     envVars:
