@@ -42,7 +42,7 @@
     "@slack/bolt": "3.12.1",
     "@slack/logger": "3.0.0",
     "cheerio": "1.0.0-rc.12",
-    "cron": "1.8.2",
+    "cron": "2.1.0",
     "dotenv": "8.6.0",
     "got": "10.7.0",
     "iconv-lite": "0.6.3",
@@ -52,7 +52,7 @@
   },
   "devDependencies": {
     "@types/cheerio": "0.22.31",
-    "@types/cron": "1.7.3",
+    "@types/cron": "2.0.0",
     "@types/lodash": "4.14.186",
     "@types/request-promise-native": "1.0.18",
     "@typescript-eslint/eslint-plugin": "4.33.0",
