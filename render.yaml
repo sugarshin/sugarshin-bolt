@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: sugarshin-bolt
+    env: node
+    repo: https://github.com/sugarshin/sugarshin-bolt.git
+    region: singapore
+    plan: free
+    branch: master
+    numInstances: 1
+    healthCheckPath: /health
+    buildCommand: npm ci && NODE_ENV=production npm run build
+    startCommand: npm start
+    envVars:
+      - key: KEEPALIVE_URL_BASE
+        value: https://sugarshin-bolt.onrender.com
+      - key: KEEPALIVE_SLEEP_TIME
+        value: 0:00
+      - key: KEEPALIVE_WAKEUP_TIME
+        value: 6:00
+      - key: TZ
+        value: Asia/Tokyo
+      - key: BLOG_BUILDER_CIRCLE_TOKEN
+        sync: false
+      - key: GITHUB_ACCESS_TOKEN
+        sync: false
+      - key: SLACK_BOT_TOKEN
+        sync: false
+      - key: SLACK_SIGNING_SECRET
+        sync: false
