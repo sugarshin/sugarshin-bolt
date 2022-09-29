@@ -4,8 +4,10 @@
 
 ## Development
 
-```
-❯ ngrok http 3000
+Port forwarding with [portmap.io]](https://portmap.io)
+
+```shell
+❯ ssh -i ~/.ssh/<private key file> <portmap usename>.<configuration name>@<portmap username>-<port number>.portmap.io -N -R <port number>:localhost:<localhost portnumber>
 ❯ npm run dev
 ```
 
