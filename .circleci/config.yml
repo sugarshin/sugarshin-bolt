@@ -44,7 +44,7 @@ workflows:
   wake_bolt_daily:
     triggers:
       - schedule:
-          cron: "5 22 * * *" # JST AM07:05
+          cron: "0 22 * * *" # JST AM07:00
           filters:
             branches:
               only:
