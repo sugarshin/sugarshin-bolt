@@ -38,7 +38,7 @@
   },
   "homepage": "https://github.com/sugarshin/sugarshin-bolt#readme",
   "dependencies": {
-    "@octokit/rest": "16.43.2",
+    "@octokit/rest": "19.0.13",
     "@slack/bolt": "3.12.1",
     "@slack/logger": "3.0.0",
     "cheerio": "1.0.0-rc.12",
