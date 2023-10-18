@@ -9,7 +9,7 @@ executors:
       - image: cimg/base:current-22.04
   nodejs:
     docker:
-      - image: cimg/node:16.20.1
+      - image: cimg/node:16.20.2
 
 jobs:
   wake_bolt:
