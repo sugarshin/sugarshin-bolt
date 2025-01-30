@@ -30,24 +30,24 @@ jobs:
             NODE_ENV: production
 
 workflows:
-  test_build_deploy:
-    jobs:
-      - lint_and_tsc
+  # test_build_deploy:
+  #   jobs:
+  #     - lint_and_tsc
 
-  # this is for only testing
-  wake_bolt_test:
-    jobs:
-      - wake_bolt:
-          filters:
-            branches:
-              only: wake-bolt-test
-  wake_bolt_daily:
-    triggers:
-      - schedule:
-          cron: "0 19 * * *" # JST AM04:00
-          filters:
-            branches:
-              only:
-                - master
-    jobs:
-      - wake_bolt
+  # # this is for only testing
+  # wake_bolt_test:
+  #   jobs:
+  #     - wake_bolt:
+  #         filters:
+  #           branches:
+  #             only: wake-bolt-test
+  # wake_bolt_daily:
+  #   triggers:
+  #     - schedule:
+  #         cron: "0 19 * * *" # JST AM04:00
+  #         filters:
+  #           branches:
+  #             only:
+  #               - master
+  #   jobs:
+  #     - wake_bolt
