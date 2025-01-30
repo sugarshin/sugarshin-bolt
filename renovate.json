@@ -2,5 +2,6 @@
   "extends": [
     "@sugarshin:js-app",
     ":automergeMinor"
-  ]
+  ],
+  "enabled": false
 }
